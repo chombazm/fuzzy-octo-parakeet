@@ -1,37 +1,38 @@
 import React from 'react';
-import {View, Text, SafeAreaView, StyleSheet} from 'react-native';
-import ColorBox from './components/ColorBox';
-function App() {
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import HomeScreen from './src/Screens/HomeScreen';
+import GrudgesScreen from './src/Screens/GrudgesScreen';
+import GrudgersScreen from './src/Screens/GrudgersScreen';
+import AboutAppScreen from './src/Screens/AboutAppScreen';
+const Stack = createNativeStackNavigator();
+const App = () => {
   return (
-    <SafeAreaView>
-      <View style={styles.container}>
-        <View style={styles.appContainer}>
-          <Text style={styles.text}>
-            Color palets. Lets get the feel in place 😊
-          </Text>
-        </View>
-        <ColorBox text="#FEA443" hexCode="#FEA443" />
-        <ColorBox text="#705E78" hexCode="#705E78" />
-        <ColorBox text="#A5AAA3" hexCode="#A5AAA3" />
-        <ColorBox text="#812F33" hexCode="#812F33" />
-        <ColorBox text="#F3FEB0" hexCode="#F3FEB0" />
-        <ColorBox />
-      </View>
-    </SafeAreaView>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{ title: 'Home' }}
+        />
+        <Stack.Screen
+          name="Grudges"
+          component={GrudgesScreen}
+          options={{ title: 'Grudges' }}
+        />
+        <Stack.Screen
+          name="Grudgers"
+          component={GrudgersScreen}
+          options={{ title: 'Grudgers' }}
+        />
+        <Stack.Screen
+          name="about"
+          component={AboutAppScreen}
+          options={{ title: 'About app' }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-}
-const styles = StyleSheet.create({
-  container: {
-    paddingHorizontal: 10,
-    display: 'flex',
-    justifyContent: 'center',
-    alignContent: 'center',
-  },
-  appContainer: {
-    margin: 20,
-  },
-  text: {
-    fontWeight: 'bold',
-  },
-});
+};
+
 export default App;
