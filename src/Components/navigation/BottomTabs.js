@@ -4,55 +4,98 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Color } from '../../constants/Colors';
 import { icons } from '../../constants/Icons';
 const Tabs = createBottomTabNavigator();
+
 import HomeScreen from '../../Screens/Home';
 import GrudgesScreen from '../../Screens/Grudges';
-import GrudgerScreen from '../../Screens/Grudgers';
+import AddGrudgeScreen from '../../Screens/AddGrudge';
+import ProfileScreen from '../../Screens/Profile';
+import NotificationsScreen from '../../Screens/Notifications';
 
 const BottomTabs = () => {
   return (
     <Tabs.Navigator
       screenOptions={{
+        headerShown: false,
         tabBarShowLabel: false,
         tabBarStyle: {
           backgroundColor: Color.background,
+          elevation: 0,
+          borderTopWidth: 0,
+          position: 'absolute',
+          // marginBottom: 10,
         },
         tabBarOptions: {
           showLabel: true,
         },
       }}>
       <Tabs.Screen
-        name="Grudges"
-        component={GrudgesScreen}
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <View>
-              <Text style={focused ? style.isActiveTab : style.isNotActive}>
-                Grudges
-              </Text>
-            </View>
-          ),
-        }}
-      />
-      <Tabs.Screen
         name="Home"
         component={HomeScreen}
         options={{
           tabBarIcon: ({ focused }) => (
             <View>
-              <Image source={icons.addGrudge} width={50} height={50} />
+              <Image
+                source={focused ? icons.homeActive : icons.home}
+                style={style.logoIcon}
+              />
             </View>
           ),
         }}
       />
       <Tabs.Screen
-        name="Grudgers"
-        component={GrudgerScreen}
+        name="Grudges"
+        component={GrudgesScreen}
         options={{
           tabBarIcon: ({ focused }) => (
             <View>
-              <Text style={focused ? style.isActiveTab : style.isNotActive}>
-                Grudgers
-              </Text>
+              <Image
+                source={focused ? icons.grudgesActive : icons.grudges}
+                style={style.logoIcon}
+              />
+            </View>
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="AddGrudge"
+        component={AddGrudgeScreen}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <View>
+              <Image
+                source={focused ? icons.addGrudge : icons.addGrudge}
+                style={style.cta}
+              />
+            </View>
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="Notifications"
+        component={NotificationsScreen}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <View>
+              <Image
+                source={
+                  focused ? icons.notificationsActive : icons.notifications
+                }
+                style={style.logoIcon}
+              />
+            </View>
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <View>
+              <Image
+                source={focused ? icons.profileActive : icons.profile}
+                style={style.logoIcon}
+              />
             </View>
           ),
         }}
@@ -60,6 +103,7 @@ const BottomTabs = () => {
     </Tabs.Navigator>
   );
 };
+
 const style = StyleSheet.create({
   isActiveTab: {
     color: Color.primaryText,
@@ -69,11 +113,13 @@ const style = StyleSheet.create({
   isNotActive: {
     color: Color.secondaryText,
   },
+  logoIcon: {
+    width: 32,
+    height: 32,
+  },
   cta: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-    backgroundColor: Color.primary,
+    width: 64,
+    height: 64,
   },
 });
 
