@@ -5,4 +5,5 @@ export const Color = {
   secondaryText: '#98A3B2',
   background: '#ffffff',
   shadePrimary: '#FCF5E3',
+  shadeSecondary: '#FCFBFB',
 };
