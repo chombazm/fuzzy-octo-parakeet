@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Color } from '../../constants/Colors';
 import { icons } from '../../constants/Icons';
@@ -22,7 +22,7 @@ const BottomTabs = () => {
           elevation: 0,
           borderTopWidth: 0,
           position: 'absolute',
-          // marginBottom: 10,
+          marginBottom: 15,
         },
         tabBarOptions: {
           showLabel: true,
