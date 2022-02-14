@@ -2,24 +2,21 @@ import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import { Color } from '../constants/Colors';
 
-import Grudge from './Grudge';
-
-const GrudgeContainer = () => {
+const Grudge = () => {
   return (
     <View style={style.container}>
-      <View style={style.containerBar}>
-        <Text style={style.barHeaderTxt}>Grudges</Text>
-        <Text style={style.barHeaderTxt}>Today</Text>
+      <View></View>
+      <View>
+        <Text>Grudge</Text>
       </View>
-      <Grudge />
     </View>
   );
 };
 
 const style = StyleSheet.create({
   container: {
-    height: 150,
-    backgroundColor: Color.background,
+    height: 100,
+    backgroundColor: Color.shadeSecondary,
   },
   containerBar: {
     flexDirection: 'row',
@@ -29,4 +26,4 @@ const style = StyleSheet.create({
     fontSize: 18,
   },
 });
-export default GrudgeContainer;
+export default Grudge;
